@@ -1,0 +1,125 @@
+body {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Gameplay area containing our coins, buttons and scores */
+h1 {
+  font-family: 'Press Start 2P', monospace;
+  color: white;
+}
+
+.blinking-animation {
+  display: inline;
+  /* Utilize the blink-animation keyframe, have the duration be .5 seconds, use the steps timing function, run infinitely */
+  animation: blink-animation .5s steps(5, start) infinite;
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* Gameplay area containing our coins, buttons and scores */
+#flip-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: darkblue;
+  width: 60vw;
+  box-shadow: 1vw, 1vw, 1vw, darkblue;
+  border-radius: 3vw;
+  justify-self: center;
+}
+
+/* Coin class for styling the coin container */
+.coin {
+  height: 210px;
+  width: 210px;
+  margin: 50px auto;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* Styling both coin images to be the same size*/
+.coin img {
+  width: 200px;
+}
+
+/* Positioning heads coin absolute */
+#heads-coin {
+  position: absolute;
+}
+
+/* Flipping animation for the heads coin */
+@keyframes flip-heads {
+  0% {
+    transform: rotateX(0);
+  }
+  100% {
+    /* rotates 1800 degrees to flip 10 times and end up facing up */
+    transform: rotateX(1800deg);
+  }
+}
+
+/* Styling tails coin to position it absolute and flip it 180 degrees so it is not visible until "flipped" */
+#tails-coin {
+  position: absolute;
+  transform: rotateX(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Flipping animation for tails coin */
+@keyframes flip-tails {
+  0% {
+    transform: rotateX(0);
+  }
+  100% {
+    /* rotates 1980 degrees to flip 10 times and end up facing up */
+    transform: rotateX(1980deg);
+  }
+}
+
+/* Styling the buttons container */
+#buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 20vw;
+}
+
+/* Styling both buttons and styling while disabled and hovered */
+button {
+  font-family: 'Press Start 2P', monospace;
+  font-size: vw;
+  background-color: aqua;
+  color: black;
+  width: 100px;
+  padding: 1vw;
+  border: 1px solid aqua;
+}
+
+button:hover {
+background-color: darkblue;
+color: aqua;
+}
+
+button:disabled {
+  color: gray;
+  border: 1px solid gray;
+}
+
+/* scores container */
+#scores {
+  display: flex;
+  width: 80%;
+  margin: 1vw;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 2rem;
+  justify-content: space-between;
+  color: aqua;
+}
